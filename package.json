@@ -1,0 +1,19 @@
+{
+  "name": "always-music",
+  "version": "1.0.0",
+  "description": "Descripción\r La escuela de música Always Music es reconocida en la ciudad por graduar a grandes\r músicos de reconocimiento mundial, sin embargo, a pesar de lo mucho que ha crecido con\r el tiempo, nunca dejaron de utilizar excel como base de datos y han decidido cambiar esto\r por un desarrollo personalizado.\r En este desafío deberás desarrollar una aplicación en Node que realice consultas a\r PostgreSQL con el paquete “pg” para:\r ● Agregar un nuevo estudiante.\r ● Consultar los estudiantes registrados.\r ● Consultar estudiante por rut.\r ● Actualizar la información de un estudiante.\r ● Eliminar el registro de un estudiante.\r Ya que el caso se trata de un proceso de desarrollo, la interacción la debes realizar con\r argumentos por la línea de comandos.\r Antes de iniciar este desafío deberás crear una base de datos y una tabla con las siguientes\r columnas:\r ● Nombre\r ● Rut\r ● Curso\r ● Nivel",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemon": "^3.1.0",
+    "pg": "^8.11.5"
+  }
+}
