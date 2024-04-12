@@ -14,6 +14,11 @@ const pool = new Pool(config);
 // Función para registrar un nuevo estudiante
 async function registrarEstudiante(nombre, rut, curso, nivel) {
   try {
+    // Validar que ninguno de los datos sea null o undefined
+    if (!nombre || !rut || !curso || !nivel) {
+      throw new Error('Todos los campos son obligatorios.');
+    }
+    
     const query = 'INSERT INTO estudiantes(nombre, rut, curso, nivel) VALUES($1, $2, $3, $4)';
     const values = [nombre, rut, curso, nivel];
     const result = await pool.query(query, values);
@@ -29,8 +34,16 @@ async function obtenerEstudiantePorRut(rut) {
   try {
     const query = 'SELECT * FROM estudiantes WHERE rut = $1';
     const result = await pool.query(query, [rut]);
-    console.log(result.rows);
-    return result.rows;
+
+    if (result.rows.length > 0) {
+      const estudiante = result.rows[0];
+      console.log('Estudiante encontrado:');
+      console.log(`Nombre: ${estudiante.nombre}, Rut: ${estudiante.rut}, Curso: ${estudiante.curso}, Nivel: ${estudiante.nivel}`);
+      return estudiante;
+    } else {
+      console.log('No se encontró ningún estudiante con el rut proporcionado.');
+      return null;
+    }
   } catch (error) {
     console.error('Error al obtener estudiante por rut:', error);
   }
@@ -39,9 +52,12 @@ async function obtenerEstudiantePorRut(rut) {
 // Función para obtener todos los estudiantes
 async function obtenerTodosLosEstudiantes() {
   try {
-    const query = 'SELECT * FROM estudiantes';
+    const query = 'SELECT nombre, rut, curso, nivel FROM estudiantes'; // Selección explícita de los campos para evitar datos nulos
     const result = await pool.query(query);
-    console.log(result.rows);
+    console.log('Estudiantes:');
+    result.rows.forEach(estudiante => {
+      console.log(`Nombre: ${estudiante.nombre}, Rut: ${estudiante.rut}, Curso: ${estudiante.curso}, Nivel: ${estudiante.nivel}`);
+    });
     return result.rows;
   } catch (error) {
     console.error('Error al obtener todos los estudiantes:', error);
@@ -73,13 +89,19 @@ async function eliminarEstudiantePorRut(rut) {
   }
 }
 
+
+
+
 /*CONSULTAS
-registrarEstudiante('Camila Salas' '24576891-8' 'Guitarra' 'Principiante');
+registrarEstudiante('Camila Salas', '24576891-8', 'Guitarra', 'Principiante');
 obtenerEstudiantePorRut('34567890-1');
 obtenerTodosLosEstudiantes();
 actualizarEstudiante();
 eliminarEstudiantePorRut('24576891-8');
 */
+
+
+
 
 
 
