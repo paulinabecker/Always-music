@@ -96,7 +96,7 @@ async function eliminarEstudiantePorRut(rut) {
 registrarEstudiante('Camila Salas', '24576891-8', 'Guitarra', 'Principiante');
 obtenerEstudiantePorRut('34567890-1');
 obtenerTodosLosEstudiantes();
-actualizarEstudiante();
+actualizarEstudiante('Pedro García', '34567890-1', 'Batería', 'Intermedio');
 eliminarEstudiantePorRut('24576891-8');
 */
 
