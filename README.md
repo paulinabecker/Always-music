@@ -1,6 +1,7 @@
 # Always-music
 
 Descripción
+
 La escuela de música Always Music es reconocida en la ciudad por graduar a grandes
 músicos de reconocimiento mundial, sin embargo, a pesar de lo mucho que ha crecido con
 el tiempo, nunca dejaron de utilizar excel como base de datos y han decidido cambiar esto
